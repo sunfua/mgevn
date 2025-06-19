@@ -1,0 +1,11 @@
+{
+  "name": "mgevn-backend",
+  "version": "1.0.0",
+  "description": "MGEVN API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sunfua",
+  "license": "ISC"
+}
