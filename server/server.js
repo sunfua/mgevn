@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const classRoutes = require('./routes/classRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const attendanceRoutes = require('./routes/attendenceRoutes'); 
+const paymentRoutes = require('./routes/paymentRoutes'); // Thêm route thanh toán
 
 require('dotenv').config();
 const app = express();
@@ -22,6 +23,8 @@ app.get('/', (req, res) => {
 app.use('/api/classes', classRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/attendances', attendanceRoutes);
+app.use('/api/payments', paymentRoutes); // Thêm route thanh toán
+
 
 // Kết nối MongoDB với Mongoose
 (async () => {
