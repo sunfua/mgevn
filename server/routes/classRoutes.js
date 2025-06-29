@@ -12,7 +12,10 @@ const {
 const router = express.Router();
 
 // Định nghĩa các route
-router.route('/').get(getClasses).post(createClass);
-router.route('/:id').get(getClassById).put(updateClass).delete(deleteClass);
+router.route('/').get(getClasses)
+      .post(protect, authorize("admin","manager"), createClass);
+router.route('/:id').get(getClassById)
+      .put(authorize("admin","manager"), updateClass)
+      .delete(authorize("admin","manager"), deleteClass);
 
 module.exports = router;
