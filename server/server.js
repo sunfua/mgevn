@@ -7,6 +7,7 @@ const attendanceRoutes = require('./routes/attendenceRoutes');
 const paymentRoutes = require('./routes/paymentRoutes'); // Thêm route thanh toán
 const authRoutes = require('./routes/authRoutes'); // Thêm route xác thực người dùng
 const { protect, authorize } = require('./middleware/auth'); // Import middleware xác thực
+// const cookieParser = require('cookie-parser'); // Nếu bạn muốn dùng httpOnly cookie
 
 require('dotenv').config();
 const app = express();
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware để parse JSON
 app.use(express.json());
+// app.use(cookieParser()); // Sử dụng nếu bạn muốn gửi token qua httpOnly cookie
 
 // Route mẫu
 app.get('/', (req, res) => {

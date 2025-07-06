@@ -8,6 +8,7 @@ const {
     updateClass,
     deleteClass
 } = require('../controllers/classController'); // Import các hàm từ controller
+const { protect, authorize } = require('../middleware/auth'); // Import middleware xác thực
 
 const router = express.Router();
 

@@ -40,7 +40,7 @@ exports.register = async (req, res) => {
             const messages = Object.values(error.errors).map(val => val.message);
             return res.status(400).json({ success: false, error: messages });
         }
-        res.status(500).json({ success: false, error: 'Server Error', details: error.message });
+        res.status(500).json({ success: false, error: 'Server Error >>>', details: error.message });
     }
 };
 
@@ -84,7 +84,7 @@ exports.login = async (req, res) => {
             }
         });
     } catch (error) {
-        res.status(500).json({ success: false, error: 'Server Error', details: error.message });
+        res.status(500).json({ success: false, error: 'Login Server Error >>>', details: error.message });
     }
 };
 
