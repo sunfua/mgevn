@@ -50,6 +50,8 @@ import AddEditClassPage from './pages/AddEditClassPage';
 import StudentListPage from './pages/StudentListPage';
 import AddEditStudentPage from './pages/AddEditStudentPage';
 import AttendancePage from './pages/AttendancePage';
+import PaymentPage from './pages/PaymentPage';
+
 
 // Layout & Components (sẽ tạo sau)
 import Navbar from './components/Navbar';
@@ -106,6 +108,11 @@ function AppContent() {
 
                 {/* Routes cho Điểm danh (THÊM DÒNG NÀY) */}
                 <Route path="/attendances" element={<PrivateRoute><AttendancePage /></PrivateRoute>} />
+
+                {/* Routes cho Học phí (THÊM DÒNG NÀY) */}
+                <Route path="/payments" element={<PrivateRoute><PaymentPage /></PrivateRoute>} />
+                {/* Route để xem lịch sử thanh toán chi tiết cho từng học viên */}
+                <Route path="/payments/student/:id" element={<PrivateRoute><PaymentPage /></PrivateRoute>} />
 
                 {/* Redirect bất kỳ đường dẫn không hợp lệ nào về Dashboard nếu đã đăng nhập, ngược lại về Login */}
                 <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />} />
