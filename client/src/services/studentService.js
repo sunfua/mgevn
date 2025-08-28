@@ -9,6 +9,15 @@ const getAllStudents = async () => {
     return response.data;
 };
 
+// Hàm mới để lấy học viên theo lớp (lọc ở frontend)
+const getStudentsByClassId = async (classId) => {
+    const allStudentsResponse = await getAllStudents();
+    const studentsInClass = allStudentsResponse.data.filter(student =>
+        student.classes.some(c => c.classId && c.classId._id === classId)
+    );
+    return studentsInClass;
+};
+
 const getStudentById = async (id) => {
     const response = await api.get(`${STUDENT_URL}/${id}`);
     return response.data;
@@ -31,6 +40,7 @@ const deleteStudent = async (id) => {
 
 const studentService = {
     getAllStudents,
+    getStudentsByClassId, // Thêm hàm này
     getStudentById,
     createStudent,
     updateStudent,

@@ -49,6 +49,7 @@ import ClassListPage from './pages/ClassListPage';
 import AddEditClassPage from './pages/AddEditClassPage';
 import StudentListPage from './pages/StudentListPage';
 import AddEditStudentPage from './pages/AddEditStudentPage';
+import AttendancePage from './pages/AttendancePage';
 
 // Layout & Components (sẽ tạo sau)
 import Navbar from './components/Navbar';
@@ -102,6 +103,9 @@ function AppContent() {
                 <Route path="/students" element={<PrivateRoute><StudentListPage /></PrivateRoute>} />
                 <Route path="/students/add" element={<PrivateRoute requiredRole={['admin', 'manager']}><AddEditStudentPage /></PrivateRoute>} />
                 <Route path="/students/edit/:id" element={<PrivateRoute requiredRole={['admin', 'manager']}><AddEditStudentPage /></PrivateRoute>} />
+
+                {/* Routes cho Điểm danh (THÊM DÒNG NÀY) */}
+                <Route path="/attendances" element={<PrivateRoute><AttendancePage /></PrivateRoute>} />
 
                 {/* Redirect bất kỳ đường dẫn không hợp lệ nào về Dashboard nếu đã đăng nhập, ngược lại về Login */}
                 <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />} />
