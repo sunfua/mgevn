@@ -8,6 +8,7 @@ exports.protect = async (req, res, next) => {
     let token;
 
     // Kiểm tra token trong headers (Bearer token)
+    console.log("server check token : ", req.headers.authorizetion);
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
     }
@@ -18,7 +19,7 @@ exports.protect = async (req, res, next) => {
 
     // Đảm bảo token tồn tại
     if (!token) {
-        return res.status(401).json({ success: false, error: 'Not authorized to access this route' });
+        return res.status(401).json({ success: false, error: 'Not authorized to access this route (if)' });
     }
 
     try {
@@ -30,7 +31,7 @@ exports.protect = async (req, res, next) => {
         next();
     } catch (error) {
         console.error('Token verification error:', error.message);
-        return res.status(401).json({ success: false, error: 'Not authorized to access this route' });
+        return res.status(401).json({ success: false, error: 'Not authorized to access this route (try)' });
     }
 };
 

@@ -8,12 +8,14 @@ const paymentRoutes = require('./routes/paymentRoutes'); // Thêm route thanh to
 const authRoutes = require('./routes/authRoutes'); // Thêm route xác thực người dùng
 const { protect, authorize } = require('./middleware/auth'); // Import middleware xác thực
 // const cookieParser = require('cookie-parser'); // Nếu bạn muốn dùng httpOnly cookie
-
+const cors = require('cors'); // Thêm CORS nếu cần thiết
+// dotenv để quản lý biến môi trường
 require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware để parse JSON
+app.use(cors()); // Cho phép CORS nếu cần thiết
 app.use(express.json());
 // app.use(cookieParser()); // Sử dụng nếu bạn muốn gửi token qua httpOnly cookie
 
